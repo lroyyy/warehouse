@@ -1,6 +1,10 @@
 package com.yeqifu.bus.mapper;
 
 import com.yeqifu.bus.entity.Goods;
+import com.yeqifu.bus.vo.GoodsStock;
+
+import java.util.List;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -13,4 +17,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface GoodsMapper extends BaseMapper<Goods> {
 
+	List<GoodsStock> findAllGoodsStock();
+	
 }

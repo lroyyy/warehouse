@@ -3,11 +3,15 @@ package com.yeqifu.bus.service.impl;
 import com.yeqifu.bus.entity.Goods;
 import com.yeqifu.bus.mapper.GoodsMapper;
 import com.yeqifu.bus.service.IGoodsService;
+import com.yeqifu.bus.vo.GoodsStock;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -21,6 +25,9 @@ import java.io.Serializable;
 @Transactional
 public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements IGoodsService {
 
+	@Autowired
+	private GoodsMapper goodsMapper;
+	
     @Override
     public boolean save(Goods entity) {
         return super.save(entity);
@@ -40,4 +47,9 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
     public Goods getById(Serializable id) {
         return super.getById(id);
     }
+
+	@Override
+	public List<GoodsStock> listGoodsStock() {
+		return goodsMapper.findAllGoodsStock();
+	}
 }

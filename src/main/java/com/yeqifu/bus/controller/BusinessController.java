@@ -74,5 +74,14 @@ public class BusinessController {
     public String toSalesbackManager(){
         return "business/salesback/salesbackManager";
     }
+    
+    /**
+     * 跳转到库存查询页面
+     * @return
+     */
+    @RequestMapping("toGoodsStock")
+    public String toGoodsStock(){
+        return "business/goods/goodsStock";
+    }
 
 }

@@ -1,6 +1,10 @@
 package com.yeqifu.bus.service;
 
 import com.yeqifu.bus.entity.Goods;
+import com.yeqifu.bus.vo.GoodsStock;
+
+import java.util.List;
+
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -13,4 +17,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IGoodsService extends IService<Goods> {
 
+	/**获取商品库存*/
+	List<GoodsStock> listGoodsStock();
+	
 }
