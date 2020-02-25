@@ -164,6 +164,9 @@ public class CacheAspect {
         }else {
             log.info("未从缓存里面找到用户对象，从数据库中查询并放入缓存");
             User res2 =(User) joinPoint.proceed();
+            if(res2==null) {
+            	log.info("null@@@!!");
+            }
             CACHE_CONTAINER.put(CACHE_USER_PROFIX+res2.getId(),res2);
             return res2;
         }

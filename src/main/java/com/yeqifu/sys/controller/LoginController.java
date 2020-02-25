@@ -39,8 +39,9 @@ public class LoginController {
     public ResultObj login(UserVo userVo,String code,HttpSession session){
 
         //获得存储在session中的验证码
-        String sessionCode = (String) session.getAttribute("code");
-        if (code!=null&&sessionCode.equals(code)){
+//        String sessionCode = (String) session.getAttribute("code");
+//        if (code!=null&&sessionCode.equals(code)){
+    	if(true) {//取消验证码
             Subject subject = SecurityUtils.getSubject();
             AuthenticationToken token = new UsernamePasswordToken(userVo.getLoginname(),userVo.getPwd());
             try {

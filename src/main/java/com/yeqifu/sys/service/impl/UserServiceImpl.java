@@ -2,10 +2,14 @@ package com.yeqifu.sys.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.yeqifu.sys.cache.CacheAspect;
 import com.yeqifu.sys.entity.User;
 import com.yeqifu.sys.mapper.RoleMapper;
 import com.yeqifu.sys.mapper.UserMapper;
 import com.yeqifu.sys.service.IUserService;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +28,7 @@ import java.util.List;
 @Service
 @Transactional
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
-
+	 private Log log = LogFactory.getLog(ServiceImpl.class);
     @Autowired
     private RoleMapper roleMapper;
 
@@ -43,6 +47,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public User getById(Serializable id) {
+    	log.info("getById:"+id);
         return super.getById(id);
     }
 
