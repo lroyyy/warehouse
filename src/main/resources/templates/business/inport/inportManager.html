@@ -269,10 +269,13 @@
             height: "full-180",
             totalRow:true,
             parseData: function(res){ //res 即为原始返回的数据
-                return {
-                    // "totalRow": {
-                    //todo 后端需计算总价，前端在这里转换
-                }
+                console.log(JSON.stringify(res));
+                
+                layui.each(res.data,function(i,d){
+                    d.sum =d.inportprice * d.number;//sum 是自定义的属性
+                    console.log("sum="+d.sum+",price="+d.price+",number="+d.number);
+                });
+                return res;
             },
             cols: [ [
                 {field: 'id', title: 'ID', align: 'center',width:'50',width:'50'},
@@ -284,8 +287,7 @@
                 {field: 'number', title: '进货数量', align: 'center',width:'100'},
                 {field: 'size', title: '商品规格', align: 'center',width:'100'},
                 {field: 'inportprice', title: '进货价格', align: 'center',width:'100'},
-                {title:'总价', align: 'center',width:'100',totalRow:true,
-                templet: '<div>{{d.number*d.inportprice}}</div>'},
+                {field: 'sum', title:'总价', align: 'center',width:'100',totalRow:true},
                 {field: 'remark', title: '备注', align: 'center',width:'120'},
                 {fixed: 'right', title: '操作', toolbar: '#inportRowBar', align: 'center',width:'260'}
             ] ],
